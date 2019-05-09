@@ -1,6 +1,6 @@
 {
   "name": "@lilonga/output-processing-js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Renders input as a Processing.js sketch. Aims for compatibility with the Khan Academy computing environment. ",
   "author": "Luka Kakia",
   "license": "MIT",
@@ -50,6 +50,6 @@
     "dist"
   ],
   "dependencies": {
-    "processing-js": "1.4.12"
+    "processing-js": "1.6.6"
   }
 }
