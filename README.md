@@ -13,6 +13,25 @@ npm install --save @lilonga/output-khan-processing
 ## Usage
 Try out an editable version of the below example at Repl.it: [https://repl.it/@lilonga/output-khan-processing](https://repl.it/@lilonga/output-khan-processing)
 
+```js
+import React, { Component } from 'react'
+
+import OutputPjs from '@lilonga/output-khan-processing'
+
+class Example extends Component {
+  render() {
+    return (
+      <OutputPjs
+        width={100}
+        height={100}
+        input="line(0,0,100,100)"
+      />
+    )
+  }
+}
+export default Example
+```
+
 ## API
 See [@lilonga/output-khan-processing docs](https://@lilonga/output-khan-processing-docs.lilo.now.sh) for more examples and documentation
 
