@@ -7,7 +7,7 @@ export default class OutputPjs extends React.Component {
   static defaultProps = {
     width: 400,
     height: 400,
-    input: "line(0,0,100,100);"
+    input: "line(0,0,400,400);"
   };
   static propTypes = {
     /** Width of canvas */
