@@ -6,7 +6,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
 import cleanup from 'rollup-plugin-cleanup';
-import { terser } from "rollup-plugin-terser";    
+import { terser } from "rollup-plugin-terser";
 import pkg from './package.json'
 
 export default {
@@ -33,7 +33,7 @@ export default {
     babel({
       compact:true,
       exclude: 'node_modules/**',
-      plugins: [ ]
+      plugins: [ "macros"]
     }),
     resolve(),
     commonjs(),

@@ -1,10 +1,10 @@
 {
-  "name": "@lilonga/output-processing-js",
-  "version": "0.0.4",
-  "description": "Renders input as a Processing.js sketch. Aims for compatibility with the Khan Academy computing environment. ",
+  "name": "@lilonga/output-khan-processing",
+  "version": "0.0.1",
+  "description": "Renders input code using Khan Academy's custom Processing.js environment.",
   "author": "Luka Kakia",
   "license": "MIT",
-  "repository": "lilonga/output-processing-js",
+  "repository": "lilonga/output-khan-processing",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -50,6 +50,7 @@
     "dist"
   ],
   "dependencies": {
-    "processing-js": "1.6.6"
+    "babel-plugin-macros": "^2.5.1",
+    "raw.macro": "^0.3.0"
   }
 }

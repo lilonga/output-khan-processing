@@ -1,20 +1,20 @@
-# @lilonga/output-processing-js
+# @lilonga/output-khan-processing
 
-> Renders input as a Processing.js sketch. Aims for compatibility with the Khan Academy computing environment.
+> Renders input code using Khan Academy's custom Processing.js environment.
 
-[![NPM](https://img.shields.io/npm/v/@lilonga/output-processing-js.svg)](https://www.npmjs.com/package/@lilonga/output-processing-js)
+[![NPM](https://img.shields.io/npm/v/@lilonga/output-khan-processing.svg)](https://www.npmjs.com/package/@lilonga/output-khan-processing)
 
 ## Install
 
 ```bash
-npm install --save @lilonga/output-processing-js
+npm install --save @lilonga/output-khan-processing
 ```
 
 ## Usage
-Try out an editable version of the below example at Repl.it: [https://repl.it/@lilonga/output-processing-js](https://repl.it/@lilonga/output-processing-js)
+Try out an editable version of the below example at Repl.it: [https://repl.it/@lilonga/output-khan-processing](https://repl.it/@lilonga/output-khan-processing)
 
 ## API
-See [@lilonga/output-processing-js docs](https://@lilonga/output-processing-js-docs.lilo.now.sh) for more examples and documentation
+See [@lilonga/output-khan-processing docs](https://@lilonga/output-khan-processing-docs.lilo.now.sh) for more examples and documentation
 
 ## License
 

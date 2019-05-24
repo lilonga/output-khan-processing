@@ -1,49 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import raw from 'raw.macro'
+const kpjs = raw('../kpjs.js')
 
-import "processing-js/processing.min.js";
-import ExposePJS from "../util/expose-pjs";
-const Processing = window.Processing;
-
-class PjsWrapper extends React.Component {
-  componentDidMount() {
-    this.pjs = new Processing(this.canvas, this.props.sketch);
-    if (this.pjs.newPropsHandler) {
-      this.pjs.newPropsHandler(this.props);
-      setTimeout(() => this.pjs.newPropsHandler(this.props), 220);
-    }
-  }
-
-  componentWillReceiveProps(newprops) {
-    if (this.props.sketch !== newprops.sketch || this.props.reloadOnRender) {
-      // this.pjs.remove();
-      this.pjs = new Processing(this.canvas, newprops.sketch);
-    }
-    if (this.pjs.newPropsHandler) {
-      this.pjs.newPropsHandler(newprops);
-    }
-  }
-
-  componentWillUnmount() {
-    // this.pjs.remove();
-  }
-
-  render() {
-    return (
-      <div ref={wrapper => (this.wrapper = wrapper)}>
-        <canvas
-          ref={canvas => (this.canvas = canvas)}
-        />
-      </div>
-    );
-  }
-}
-
-export default class OutputP5 extends React.Component {
+export default class OutputPjs extends React.Component {
   static defaultProps = {
-    width: 200,
-    height: 200,
-    input: "line(0,0,100,100)"
+    width: 400,
+    height: 400,
+    input: "line(0,0,100,100);"
   };
   static propTypes = {
     /** Width of canvas */
@@ -51,49 +15,62 @@ export default class OutputP5 extends React.Component {
     /** Height of canvas */
     height: PropTypes.number,
     /** Processing.js code in string format */
-    input: PropTypes.string,
+    input: PropTypes.string
   };
   constructor(props) {
     super(props);
-    this.pjsRunner = this.pjsRunner.bind(this);
   }
-  pjsRunner(p) {
-    let input = this.props.input;
-    //Use width/height from props
-    p.size(this.props.width, this.props.height);
 
-    p.newPropsHandler = props => {
-      if (props.input) {
-        input = props.input;
-      }
-      try {
-        var draw;
-        eval(ExposePJS + input);
-        if (typeof draw === "function") {
-          p.draw = draw;
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    try {
-      var draw;
-      eval(ExposePJS + input);
-      if (typeof draw === "function") {
-        p.draw = draw.bind(p);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
   render() {
-    return (
-      <PjsWrapper
-        reloadOnRender={true}
-        sketch={this.pjsRunner}
-        input={this.props.input}
-      />
-    );
+    let { width, height, input } = this.props;
+    let sketchString = `
+      //set by default in khan editor
+      angleMode = "degrees"
+      size(${width},${height});
+      ${input}
+    `;
+
+    const srcDoc = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Processing.JS</title>
+    <style>
+        * {
+        overflow:hidden;
+        box-sizing:border-box;
+        border:none;
+        margin:0;
+        padding:0;
+
+      }
+    </style>
+  </head>
+  <body>
+      <canvas  id="mycanvas" ></canvas>
+  </body>
+
+<script>
+${kpjs}
+</script>
+  <script>
+        var sketchString = \`${sketchString}\`
+        var sketchProc = function(processingInstance) {
+         with (processingInstance) {
+            eval(sketchString)
+            }
+          };
+        var canvas = document.getElementById("mycanvas");
+        var processingInstance = new Processing(canvas, sketchProc);
+  </script>
+</html>
+    `;
+    let iframeStyle = {
+      border:"none",
+      minWidth:"100%",
+      minHeight:"100%"
+    }
+    return <iframe   {...this.props} style={iframeStyle} srcDoc={srcDoc} />;
   }
 }
+

@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "@lilonga/output-processing-js-docs",
+    "name": "@lilonga/output-khan-processing-docs",
     "builds": [
         { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "styleguide" } }
     ]
