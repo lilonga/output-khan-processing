@@ -17,14 +17,10 @@ export default class OutputPjs extends React.Component {
     /** Processing.js code in string format */
     input: PropTypes.string
   };
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let { width, height, input } = this.props;
     let sketchString = `
-      //set by default in khan editor
+      //set by default in khan live-editor
       angleMode = "degrees"
       size(${width},${height});
       ${input}
@@ -70,7 +66,7 @@ ${kpjs}
       minWidth:"100%",
       minHeight:"100%"
     }
-    return <iframe   {...this.props} style={iframeStyle} srcDoc={srcDoc} />;
+    return <iframe   {...this.props} style={iframeStyle} srcDoc={srcDoc} title="Processing.js" />;
   }
 }
 
