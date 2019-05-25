@@ -4,6 +4,13 @@
   "description": "Renders input code using Khan Academy's custom Processing.js environment.",
   "author": "Luka Kakia",
   "license": "MIT",
+  "keywords": [
+    "khan-academy",
+    "generative-art",
+    "creative-coding",
+    "processing",
+    "processing-js"
+  ],
   "repository": "lilonga/output-khan-processing",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
