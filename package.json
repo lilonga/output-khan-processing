@@ -1,6 +1,6 @@
 {
   "name": "@lilonga/output-khan-processing",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Renders input code using Khan Academy's custom Processing.js environment.",
   "author": "Luka Kakia",
   "license": "MIT",
